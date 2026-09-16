@@ -58,9 +58,10 @@ In this workshop, you take on the role of a pit crew for the River Racing F1 tea
 > [!NOTE]
 > The pasted lines will collapse onto a single line — this happens in any editor. That's fine — save and exit as normal.
 
-4. Now, you can start the dashboard:
+4. Now, you can start the datagen and dashboard:
 
     ```bash
+    uv run f1-race
     uv run f1-pitwall
     ```
 
