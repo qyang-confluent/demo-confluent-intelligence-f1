@@ -61,7 +61,6 @@ In this workshop, you take on the role of a pit crew for the River Racing F1 tea
 4. Now, you can start the datagen and dashboard:
 
     ```bash
-    uv run f1-race
     uv run f1-pitwall
     ```
 
