@@ -1,6 +1,6 @@
 # =============================================================================
 # Per-attendee variables. wsa injects these for each attendee workspace:
-#   - identity:      prefix, owner_email          (wsa-spec-aws.yaml terraform_vars)
+#   - identity:      prefix, user_email           (wsa-spec-aws.yaml terraform_vars)
 #   - Confluent:     confluent_cloud_api_key / _secret         (env_vars, TF_VAR_*)
 #   - Bedrock (shared across attendees): aws_bedrock_* / aws_session_token (env_vars)
 #   - shared infra: terraform/aws-shared's outputs are injected by wsa as
@@ -19,12 +19,18 @@ variable "prefix" {
 }
 
 variable "owner_email" {
-  description = "Attendee/owner email, tagged on AWS resources. Doubles as the attendee's Confluent Cloud login when grant_console_access is on."
+  description = "Workshop organizer email, tagged on AWS resources. Same value terraform/aws-shared uses (wsa injects it from TF_VAR_owner_email)."
   type        = string
 }
 
+variable "user_email" {
+  description = "Attendee email (their wsa pool account), tagged on AWS resources as user_email. Doubles as the attendee's Confluent Cloud login when grant_console_access is on. Falls back to owner_email when empty (standalone deploy)."
+  type        = string
+  default     = ""
+}
+
 variable "grant_console_access" {
-  description = "Give the attendee EnvironmentAdmin on their own environment so they can log in to the Confluent Cloud Console and use the Flink SQL workspace. Requires owner_email to already exist as an accepted CC user — see docs/organizer/README.md's one-time org prep (section 1.4)."
+  description = "Give the attendee EnvironmentAdmin on their own environment so they can log in to the Confluent Cloud Console and use the Flink SQL workspace. Requires user_email to already exist as an accepted CC user — see docs/organizer/README.md's one-time org prep (section 1.4)."
   type        = bool
   default     = false
 }

@@ -86,7 +86,7 @@ stage_paths:
 # below; Terraform picks up TF_VAR_* from the environment natively.
 terraform_vars:
   prefix: "f1wp{NNN}" # -> RIVER-RACING-f1wp001-ENV, river-racing-f1wp001-<hex>-simulator
-  owner_email: "{email}"
+  user_email: "{email}" # attendee login; owner_email comes from TF_VAR_owner_email (env_vars)
   region: "us-east-1"
   flink_max_cfu: "10"
   seconds_per_lap: "20" # 20s/lap -> 20-minute race (must match the 20s TUMBLE window in LAB 3 SQL)

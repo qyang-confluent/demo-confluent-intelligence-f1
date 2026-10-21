@@ -34,7 +34,7 @@ attendees. `aws-shared` fixes `max_replication_slots` at 105 (the accelerator's
 95-account maximum plus 10 spare slots), so resizing a resumed run does not
 replace or silently reconfigure the shared database.
 
-**Key `aws` variables:** `prefix`, `owner_email`, `region`,
+**Key `aws` variables:** `prefix`, `owner_email` (organizer, from TF_VAR_owner_email), `user_email` (attendee, wsa `{email}`), `region`,
 `confluent_cloud_api_key/_secret`, `aws_bedrock_access_key/_secret`,
 `aws_session_token` (optional), and the shared inputs `shared_vpc_id`,
 `shared_subnet_ids`, `shared_postgres_host`, `shared_postgres_password`,

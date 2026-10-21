@@ -60,6 +60,7 @@ resource "aws_security_group" "ecs" {
   tags = {
     Name        = "${lower(var.prefix)}-ecs"
     owner_email = var.owner_email
+    user_email  = local.user_email
   }
 }
 

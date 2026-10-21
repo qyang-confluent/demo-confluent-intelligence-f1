@@ -25,7 +25,7 @@ output "environment_url" {
 # in 1Password (wsa vault "Workshop Setup Accelerator Users") — Terraform never
 # sees it. Empty unless grant_console_access is on.
 output "console_username" {
-  value = var.grant_console_access ? var.owner_email : ""
+  value = var.grant_console_access ? local.user_email : ""
 }
 
 output "cluster_id" {

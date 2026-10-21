@@ -9,6 +9,7 @@ provider "aws" {
   default_tags {
     tags = {
       owner_email = var.owner_email
+      user_email  = local.user_email
     }
   }
 }

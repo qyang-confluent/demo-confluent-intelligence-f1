@@ -11,6 +11,8 @@ data "confluent_organization" "main" {}
 
 locals {
   name_prefix = "RIVER-RACING-${var.prefix}"
+  # Attendee login/tag; standalone deploys pass only owner_email.
+  user_email = var.user_email != "" ? var.user_email : var.owner_email
 }
 
 # --- Confluent Cloud: environment, cluster, Flink pool ---
@@ -21,7 +23,7 @@ module "environment" {
   owner_email      = var.owner_email
   # The attendee's Confluent Cloud login is their wsa pool account — the same
   # plus-aliased address wsa builds this environment for.
-  attendee_email       = var.owner_email
+  attendee_email       = local.user_email
   grant_console_access = var.grant_console_access
 }
 
